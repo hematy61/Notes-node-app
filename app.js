@@ -50,6 +50,22 @@ yargs.command({
   }
 });
 
+// create edit command 
+yargs.command({
+  command: 'edit',
+  desc: ' edit a note by title',
+  builder: {
+    title: {
+      desc: 'Note title',
+      demandOption: true,
+      type: 'string'
+    }
+  },
+  handler: ({title}) => {
+    console.log('running edit command');
+    console.log(chalk.green('title: ', title));
+  }
+});
 
 
 yargs.parse();
