@@ -22,7 +22,7 @@ yargs.command({
     console.log(chalk.green('title: ', title))
     console.log(chalk.yellow('body: ', body))
   }
-})
+});
 
 // create remove command
 yargs.command({
@@ -37,8 +37,19 @@ yargs.command({
   },
   handler: ({title}) => {
     console.log('running remove command');
-    console.log(chalk.green('title: ', title))
+    console.log(chalk.green('title: ', title));
   }
-})
+});
+
+// create list command
+yargs.command({
+  command: 'list',
+  desc: 'lists all notes',
+  handler: () => {
+    console.log('running list command');
+  }
+});
+
+
 
 yargs.parse();
