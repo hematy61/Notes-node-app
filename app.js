@@ -17,10 +17,27 @@ yargs.command({
       type: 'string'
     }
   },
-  handler: (argv) => {
+  handler: ({title, body}) => {
     console.log('running add command')
-    console.log(chalk.green('title: ', argv.title))
-    console.log(chalk.yellow('body: ', argv.body))
+    console.log(chalk.green('title: ', title))
+    console.log(chalk.yellow('body: ', body))
+  }
+})
+
+// create remove command
+yargs.command({
+  command: 'remove',
+  desc: 'removes a note',
+  builder: {
+    title: {
+      desc: 'Note title',
+      demandOption: true,
+      type: 'string'
+    }
+  },
+  handler: ({title}) => {
+    console.log('running remove command');
+    console.log(chalk.green('title: ', title))
   }
 })
 
