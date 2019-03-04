@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/hematy61/Notes-node-app#readme",
   "dependencies": {
-    "chalk": "^2.4.2"
+    "chalk": "^2.4.2",
+    "yargs": "^13.2.1"
   }
 }
