@@ -1,0 +1,22 @@
+{
+  "name": "notes-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hematy61/Notes-node-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hematy61/Notes-node-app/issues"
+  },
+  "homepage": "https://github.com/hematy61/Notes-node-app#readme",
+  "dependencies": {
+    "chalk": "^2.4.2"
+  }
+}
