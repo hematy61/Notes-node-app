@@ -1,23 +1,9 @@
 const fs = require('fs');
 const chalk = require('chalk');
 
-const getNotes = () => {
-  return 'your notes ....';
-};
-
-// this function handles adding new notes
-const addNote = (title, body) => {
-  let notes = loadNotes();
-  // checking for the note with the same title. we don't want to have same note.
-  const duplicateNotes = notes.filter( note => note.title === title);
-  if (duplicateNotes.length === 0) {
-    notes.push({title, body});
-    saveNotes(notes);
-    console.log(chalk.greenBright.inverse.bold('new note added successfully!!!'))
-  } else{
-    console.log(chalk.redBright.inverse.bold('this title exist!!!'))
-  }
-};
+//--------------------------------------------------------------------------
+//-- General functions ------------------------------------------------------------
+//--------------------------------------------------------------------------
 
 // this function is saving the new or edited notes to the data.json file.
 const saveNotes = (notes) => {
@@ -34,11 +20,56 @@ const loadNotes = () => {
     const notes = JSON.parse(fs.readFileSync('./data.json').toString());
     return notes;
   } catch (error) {
-      return [];
+    return [];
   }
 };
 
+//--------------------------------------------------------------------------
+//-- List Notes ------------------------------------------------------------
+//--------------------------------------------------------------------------
+const getNotes = () => {
+  return 'your notes ....';
+};
+
+//--------------------------------------------------------------------------
+//-- Add Notes -------------------------------------------------------------
+//--------------------------------------------------------------------------
+
+// this function handles adding new notes
+const addNote = (title, body) => {
+  let notes = loadNotes();
+  // checking for the note with the same title. we don't want to have same note.
+  const duplicateNotes = notes.filter( note => note.title === title);
+  if (duplicateNotes.length === 0) {
+    notes.push({title, body});
+    saveNotes(notes);
+    console.log(chalk.greenBright.inverse.bold('new note added successfully!!!'));
+  } else{
+    console.log(chalk.redBright.inverse.bold('this title exist!!!'));
+  }
+};
+
+//--------------------------------------------------------------------------
+//-- Remove Notes ----------------------------------------------------------
+//--------------------------------------------------------------------------
+
+const removeNote = (title) => {
+  const notes = loadNotes();
+  const notesToKeep = notes.filter( note => note.title !== title );
+  if (notesToKeep.length < notes.length) {
+    console.log(chalk.greenBright.inverse('Note Removed.'))
+    saveNotes(notesToKeep);
+  }else{
+    console.log(chalk.redBright.inverse("the title doesn't exist"));
+  }
+}
+
+
+
+
+
 module.exports = exports = {
   getNotes,
-  addNote
+  addNote,
+  removeNote
 }

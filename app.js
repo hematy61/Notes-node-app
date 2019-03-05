@@ -1,7 +1,7 @@
 const chalk = require('chalk');
 const yargs = require('yargs');
 
-const {getNotes, addNote} = require('./notes');
+const {getNotes, addNote, removeNote} = require('./notes');
 
 // create add command
 yargs.command({
@@ -38,7 +38,7 @@ yargs.command({
   },
   handler: ({title}) => {
     console.log('running remove command');
-    console.log(chalk.green('title: ', title));
+    removeNote(title);
   }
 });
 
