@@ -11,7 +11,6 @@ const saveNotes = (notes) => {
   console.log(loadNotes())
 };
 
-
 // this function is gonna load all notes from data.json.
 const loadNotes = () => {
   // if there is data.json file "try" code is gonna run, otherwise it's gonna run "catch" code and return
@@ -24,12 +23,18 @@ const loadNotes = () => {
   }
 };
 
+const getNotes = () => {
+  console.log('your notes ....')
+};
 //--------------------------------------------------------------------------
 //-- List Notes ------------------------------------------------------------
 //--------------------------------------------------------------------------
-const getNotes = () => {
-  return 'your notes ....';
-};
+
+const listNotes = () => {
+  loadNotes().map((note, i) => {
+    console.log(`Note ${i + 1}: ${note.title}`)
+  });
+}
 
 //--------------------------------------------------------------------------
 //-- Add Notes -------------------------------------------------------------
@@ -71,5 +76,6 @@ const removeNote = (title) => {
 module.exports = exports = {
   getNotes,
   addNote,
-  removeNote
+  removeNote,
+  listNotes
 }
