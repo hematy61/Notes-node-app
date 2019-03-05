@@ -1,7 +1,7 @@
 const chalk = require('chalk');
 const yargs = require('yargs');
 
-const {getNotes, addNote, removeNote, listNotes} = require('./notes');
+const {getNotes, addNote, removeNote, listNotes, findNote} = require('./notes');
 
 // create add command
 yargs.command({
@@ -68,6 +68,23 @@ yargs.command({
     console.log(chalk.green('title: ', title));
   }
 });
+
+// create find note
+yargs.command({
+  command: 'find',
+  desc: 'finding the note by its title',
+  builder: {
+    title: {
+      desc: 'Note title',
+      demandOption: true,
+      type: 'string'
+    }
+  },
+  handler({title}) {
+    console.log('running find note command')
+    findNote(title);
+  }
+})
 
 
 yargs.parse();

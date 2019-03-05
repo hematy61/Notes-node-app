@@ -69,13 +69,23 @@ const removeNote = (title) => {
   }
 }
 
-
-
+//--------------------------------------------------------------------------
+//-- Find Notes ----------------------------------------------------------
+//--------------------------------------------------------------------------
+const findNote = (title) => {
+  const note = loadNotes().find( note => note.title === title);
+  if (note) {
+    console.log(`Note: ${title} \nDescription: ${note.body}`);
+  }else{
+    console.log('no note found')
+  }
+};
 
 
 module.exports = exports = {
   getNotes,
   addNote,
   removeNote,
-  listNotes
+  listNotes,
+  findNote
 }
