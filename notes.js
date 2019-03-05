@@ -44,8 +44,8 @@ const listNotes = () => {
 const addNote = (title, body) => {
   let notes = loadNotes();
   // checking for the note with the same title. we don't want to have same note.
-  const duplicateNotes = notes.filter( note => note.title === title);
-  if (duplicateNotes.length === 0) {
+  const duplicateNote = notes.find( note => note.title === title);
+  if (!duplicateNote) {
     notes.push({title, body});
     saveNotes(notes);
     console.log(chalk.greenBright.inverse.bold('new note added successfully!!!'));
