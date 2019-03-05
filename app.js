@@ -19,7 +19,7 @@ yargs.command({
       type: 'string'
     }
   },
-  handler: ({title, body}) => {
+  handler({title, body}) {
     console.log('running add command');
     console.log(addNote(title, body));
   }
@@ -36,7 +36,7 @@ yargs.command({
       type: 'string'
     }
   },
-  handler: ({title}) => {
+  handler({title}) {
     console.log('running remove command');
     removeNote(title);
   }
@@ -46,7 +46,7 @@ yargs.command({
 yargs.command({
   command: 'list',
   desc: 'lists all notes',
-  handler: () => {
+  handler() {
     console.log('running list command');
   }
 });
@@ -62,7 +62,7 @@ yargs.command({
       type: 'string'
     }
   },
-  handler: ({title}) => {
+  handler({title}) {
     console.log('running edit command');
     console.log(chalk.green('title: ', title));
   }
